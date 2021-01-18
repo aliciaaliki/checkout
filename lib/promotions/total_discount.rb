@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Promotions
   class TotalDiscount
     attr_reader :min_price, :discount_percentage
@@ -7,11 +9,9 @@ module Promotions
       @discount_percentage = discount_percentage
     end
 
-    def apply(basket, total)
+    def apply(_basket, total)
       discount = 0
-      if total >= min_price
-        discount = total * discount_percentage
-      end
+      discount = total * discount_percentage if total >= min_price
       discount
     end
   end
