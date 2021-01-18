@@ -46,6 +46,10 @@ RSpec.describe Checkout do
   end
 
   it 'always applies the total price discount last' do
+    promotions = [
+      Promotions::TotalDiscount.new(60, 0.10),
+      Promotions::ProductMultibuyPrice.new('001', 2, 9.25, 8.5)
+    ]
     co.scan(lavender_heart)
     co.scan(personalised_cufflinks)
     co.scan(lavender_heart)

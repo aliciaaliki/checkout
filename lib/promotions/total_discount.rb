@@ -8,11 +8,5 @@ module Promotions
       @min_price = min_price
       @discount_percentage = discount_percentage
     end
-
-    def apply(_basket, total)
-      discount = 0
-      discount = total * discount_percentage if total >= min_price
-      discount
-    end
   end
 end
