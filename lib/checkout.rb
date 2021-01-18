@@ -11,4 +11,11 @@ class Checkout
   def scan(item)
     basket << item
   end
+
+  def total
+    basket.each do |item|
+      @sum += item.price
+    end
+    sum.round(2)
+  end
 end
