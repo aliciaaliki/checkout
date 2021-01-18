@@ -1,7 +1,9 @@
 require_relative '../lib/checkout'
+require_relative '../lib/promotions/total_discount'
 
 RSpec.describe Checkout do
-  let(:co){ Checkout.new }
+  promotions = [Promotions::TotalDiscount.new(60, 0.10)]
+  let(:co){ Checkout.new(promotions) }
   let(:basket){ co.basket }
   
   let(:lavender_heart) { Product.new("001", "Lavender heart", 9.25) }
@@ -14,10 +16,10 @@ RSpec.describe Checkout do
     expect(basket.size).to eq(2)
   end
 
-  it 'calculates the total of basket without promotions' do
+  it 'calculates the total of basket with over £60 promotion' do
     co.scan(lavender_heart)
     co.scan(personalised_cufflinks)
-    co.scan(kids_t_shirts)
-    expect(co.total).to eq(74.2)
+    co.scan(kids_t_shirt)
+    expect(co.total).to eq(66.78)
   end
 end
