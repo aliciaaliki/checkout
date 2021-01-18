@@ -5,7 +5,7 @@ module Promotions
     def initialize(min_price, discount_percentage)
       @min_price = min_price
       @discount_percentage = discount_percentage
-    end 
+    end
 
     def apply(basket, total)
       discount = 0
