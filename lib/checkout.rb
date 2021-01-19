@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require_relative 'product'
+require_relative 'promotions/total_discount'
+require_relative 'promotions/product_multibuy_price'
+
 class Checkout
   attr_accessor :basket, :sum
 
@@ -19,6 +23,11 @@ class Checkout
     end
     apply_promotions
     sum.round(2)
+  end
+
+  def empty_basket
+    @basket = []
+    @sum = 0
   end
 
   private
