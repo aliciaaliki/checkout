@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/product'
-
 describe 'Product' do
   it 'creates a product with code, name and price' do
     product = Product.new('001', 'name', 9.25)

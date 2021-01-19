@@ -5,6 +5,7 @@ module Promotions
     attr_reader :product_code, :min_number, :price, :discounted_price
 
     def initialize(product_code, min_number, price, discounted_price)
+      raise Error.not_valid_discount unless Validation.positive_min_number?(min_number)
       raise Error.not_valid_discount unless Validation.discounted_new_price?(price, discounted_price)
       raise Error.not_valid_promotion unless Validation.valid_multibuy_promotion?(product_code, min_number, price,
                                                                                   discounted_price)

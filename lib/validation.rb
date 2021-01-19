@@ -16,4 +16,8 @@ class Validation
   def self.discounted_new_price?(price, discounted_price)
     discounted_price < price
   end
+
+  def self.positive_min_number?(min_number)
+    min_number.positive?
+  end
 end

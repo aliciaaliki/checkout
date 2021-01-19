@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/validation'
-
 RSpec.describe Validation do
   describe '#valid_product?' do
     it 'returns true when inputs are valid' do
@@ -56,6 +54,16 @@ RSpec.describe Validation do
 
     it 'returns false when inputs are empty' do
       expect(Validation.discounted_new_price?('', '')).to be false
+    end
+  end
+
+  describe '#positive_min_number?' do
+    it 'returns true when min_number is over 0' do
+      expect(Validation.positive_min_number?(1)).to be true
+    end
+
+    it 'returns false when min_number is 0' do
+      expect(Validation.positive_min_number?(0)).to be false
     end
   end
 end
