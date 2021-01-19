@@ -2,6 +2,7 @@
 
 require_relative '../lib/checkout'
 require_relative '../lib/product'
+require_relative '../lib/validation'
 require_relative '../lib/promotions/total_discount'
 require_relative '../lib/promotions/product_multibuy_price'
 
