@@ -1,55 +1,22 @@
 # Checkout
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/checkout`. To experiment with that code, run `bin/console` for an interactive prompt.
+In my implementation my focus was to make sure that the code is flexible so new promotions could be added later and updated each time the code is running. For that reason, I decided to include the promotions initialisers in a folder with a clear name for each. By initialising the promotions, their values can easily be updated in each session so a different percentage of discount can be added in a session for example.
 
-TODO: Delete this and the text above, and describe your gem
+Similar with the products instead of hardcoding them, I have created a class to initialise them with as many products as we need.
 
-## Installation
+Checkout class has the main responsibility to manage the basket and call the promotions. Some validations and error messages have been added in Product and Promotions classes to make it easier to identify any mistakes made when creating them.
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'checkout'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install checkout
+All the classes have been tested using TDD.
 
 ## Usage
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/checkout. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/checkout/blob/master/CODE_OF_CONDUCT.md).
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Checkout project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/checkout/blob/master/CODE_OF_CONDUCT.md).
-
-
-require "./lib/checkout.rb"
+Use the following to add items in the basket and calculate the total.
 
 promotions = [
   Promotions::ProductMultibuyPrice.new('001', 2, 9.25, 8.5),
   Promotions::TotalDiscount.new(60, 0.10)
 ]
+
 co = Checkout.new(promotions)
 
 lavender_heart = Product.new('001', 'Lavender heart', 9.25)
@@ -62,3 +29,9 @@ co.scan(kids_t_shirt)
 
 co.total
 co.empty_basket
+
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`.

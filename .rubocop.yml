@@ -1,0 +1,7 @@
+Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+Metrics/MethodLength:
+  Max: 15
